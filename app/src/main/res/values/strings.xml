@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Usuarios</string>
+    <!--Login-->
+    <string name="IniciarSesion">Iniciar sesión</string>
+
+    <!--Menu-->
+    <string name="CerrarSesion">Cerrar sesión</string>
+    <!--Formulario-->
+    <string name="Registrar">Agregar</string>
+    <string name="RUN">RUN</string>
+    <string name="Nombre">Nombre</string>
+    <string name="Apellido">Apellido</string>
+    <string name="Edad">Edad</string>
+    <string name="Genero">Género</string>
+    <string name="TipoUsuario">Tipo de usuario</string>
+    <string name="Password">Contraseña</string>
+    <string name="Masculino">Masculino</string>
+    <string name="Femenino">Femenino</string>
+    <string name="Administrador">Administrador</string>
+    <string name="Usuario">Usuario</string>
+
+    <!--Botones CRUD-->
+    <string name="Buscar">Buscar</string>
+    <string name="Agregar">Agregar</string>
+    <string name="Modificar">Modificar</string>
+    <string name="Eliminar">Eliminar</string>
+</resources>

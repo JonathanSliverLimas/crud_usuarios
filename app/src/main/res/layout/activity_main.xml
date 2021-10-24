@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="10dp"
+        android:background="@color/fondo1">
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/login"
+            android:scaleType="centerCrop"/>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:padding="5dp">
+
+            <EditText
+                android:id="@+id/RUN_Login"
+                android:hint="@string/RUN"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:inputType="number"
+                android:maxLength="8"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true"
+            android:layout_marginTop="15dp"
+            android:padding="5dp">
+
+            <EditText
+                android:id="@+id/Password_Login"
+                android:hint="@string/Password"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:inputType="textPassword"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/iniciarSesion"
+            android:text="@string/IniciarSesion"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:background="@color/primario"
+            android:textColor="@color/blanco"
+            />
+
+    </LinearLayout>
+
+</RelativeLayout>

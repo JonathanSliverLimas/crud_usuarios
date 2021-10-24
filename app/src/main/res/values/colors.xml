@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="primario">#053742</color>
+    <color name="secundario">#184863</color>
+    <color name="celeste">#043855</color>
+    <color name="fondo1">#E8F0F2</color>
+    <color name="fondo2">#CDF0EA</color>
+    <color name="rosado">#F6C6EA</color>
+    <color name="azul">#125D98</color>
+    <color name="negro">#000000</color>
+    <color name="blanco">#FFFFFF</color>
+    <color name="gris">#293B5F</color>
+</resources>
