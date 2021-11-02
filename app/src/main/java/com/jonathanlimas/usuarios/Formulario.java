@@ -125,8 +125,9 @@ public class Formulario extends AppCompatActivity {
                 // Todos los campos son obligatorios
                 if(run.equals("") || run.equals("0")){
                     Toast.makeText(Formulario.this, "Por favor ingrese el RUN", Toast.LENGTH_SHORT).show();
-                }
-                else{
+                }else if(run.equals("10100100")){
+                    Toast.makeText(Formulario.this, "El RUN ingresado es el Super Usuario, por lo tanto no puedes eliminarlo.", Toast.LENGTH_SHORT).show();
+                } else{
                     eliminarUsuario(view);
                 }
             }
@@ -173,7 +174,8 @@ public class Formulario extends AppCompatActivity {
         return super.onSupportNavigateUp();
     }
 
-    private void radioGenero(View view){
+    public void radioGenero(View view){
+
         boolean checked = ((RadioButton) view).isChecked();
 
         switch(view.getId()) {
@@ -189,8 +191,7 @@ public class Formulario extends AppCompatActivity {
 
     }
 
-    private void radioTipoUsuario(View view){
-
+    public void radioTipoUsuario(View view){
         boolean checked = ((RadioButton) view).isChecked();
 
         switch(view.getId()) {
@@ -202,7 +203,7 @@ public class Formulario extends AppCompatActivity {
                 if (checked)
                     persona.setTipoUsuario(usuario.getText().toString());
                 break;
-        }
+            }
     }
 
     private void registrarUsuario(View view){
@@ -278,6 +279,7 @@ public class Formulario extends AppCompatActivity {
                 }
             }else{
                 Toast.makeText(this, "No existe el usuario", Toast.LENGTH_SHORT).show();
+                limpiarFormulario();
             }
 
             BaseDeDatos.close();
@@ -294,28 +296,35 @@ public class Formulario extends AppCompatActivity {
             SQLiteDatabase BaseDeDatos = admin.getWritableDatabase();
 
             String runUpdate = RUN.getText().toString();
-            persona.setNombre(nombre.getText().toString());
-            persona.setApellido(apellido.getText().toString());
-            persona.setEdad(Integer.parseInt(edad.getText().toString()));
-            persona.setPassword(password.getText().toString());
+            Cursor buscarRUN = BaseDeDatos.rawQuery("SELECT run FROM usuarios WHERE run = " + runUpdate, null);
 
-            ContentValues registro = new ContentValues();
+            if(buscarRUN.moveToFirst()){
+                persona.setNombre(nombre.getText().toString());
+                persona.setApellido(apellido.getText().toString());
+                persona.setEdad(Integer.parseInt(edad.getText().toString()));
+                persona.setPassword(password.getText().toString());
 
-            registro.put("nombre", persona.getNombre());
-            registro.put("apellido", persona.getApellido());
-            registro.put("edad", persona.getEdad());
-            registro.put("password", persona.getPassword());
-            registro.put("genero", persona.getGenero());
-            registro.put("tipo_usuario", persona.getTipoUsuario());
+                ContentValues registro = new ContentValues();
 
-            BaseDeDatos.update("usuarios", registro, "run="+ runUpdate, null);
+                registro.put("nombre", persona.getNombre());
+                registro.put("apellido", persona.getApellido());
+                registro.put("edad", persona.getEdad());
+                registro.put("password", persona.getPassword());
+                registro.put("genero", persona.getGenero());
+                registro.put("tipo_usuario", persona.getTipoUsuario());
 
-            BaseDeDatos.close();
+                BaseDeDatos.update("usuarios", registro, "run="+ runUpdate, null);
 
-            limpiarFormulario();
+                BaseDeDatos.close();
 
-            Toast.makeText(this,"Usuario modificado", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, ListaUsuarios.class));
+                limpiarFormulario();
+
+                Toast.makeText(this,"Usuario modificado", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, ListaUsuarios.class));
+            }else{
+                Toast.makeText(this, "No existe el usuario", Toast.LENGTH_SHORT).show();
+                limpiarFormulario();
+            }
 
         }catch (Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -329,13 +338,19 @@ public class Formulario extends AppCompatActivity {
 
             String runDelete = RUN.getText().toString();
 
-            BaseDeDatos.delete("usuarios", "run="+ runDelete, null);
-            limpiarFormulario();
-            BaseDeDatos.close();
+            Cursor buscarRUN = BaseDeDatos.rawQuery("SELECT run FROM usuarios WHERE run = " + runDelete, null);
 
-            Toast.makeText(this,"Usuario eliminado correctamente", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, ListaUsuarios.class));
+            if(buscarRUN.moveToFirst()){
+                BaseDeDatos.delete("usuarios", "run="+ runDelete, null);
+                limpiarFormulario();
+                BaseDeDatos.close();
 
+                Toast.makeText(this,"Usuario eliminado correctamente", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, ListaUsuarios.class));
+            }else{
+                Toast.makeText(this, "No existe el usuario", Toast.LENGTH_SHORT).show();
+                limpiarFormulario();
+            }
         }catch (Exception e){
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }

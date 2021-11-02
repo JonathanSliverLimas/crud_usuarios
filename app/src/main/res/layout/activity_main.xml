@@ -59,9 +59,22 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:background="@color/primario"
+            android:background="@drawable/custom_button"
             android:textColor="@color/blanco"
-            />
+            app:cornerRadius="15dp"/>
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="RUN: 10100100"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Password: 123456"
+            android:layout_marginTop="10dp"/>
+
 
     </LinearLayout>
 

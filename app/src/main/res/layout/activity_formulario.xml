@@ -174,14 +174,14 @@
                             android:text="@string/Administrador"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:onClick="radioTipoUsuario" />
+                            android:onClick="radioTipoUsuario"/>
 
                         <RadioButton
                             android:id="@+id/Usuario"
                             android:text="@string/Usuario"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:onClick="radioTipoUsuario" />
+                            android:onClick="radioTipoUsuario"/>
 
                     </RadioGroup>
 
